@@ -33,15 +33,17 @@ function runEnter() {
   // Use the form input to filter the data by date of UFO sighting
   var matchingResults = tableData.filter(ufoSighting => ufoSighting.datetime == userInput);
 
-  console.log(matchingResults);
+  // console.log(matchingResults);
   
   // Get the element for printing out the results
   var ufoElement = d3.select("tr");
 
-  // populate here 
-  data.forEach((filteredUfoOutput) => {
-    var rows = matchingResults.append("tr");
-    Object.entries(matchingResults).forEach(([key, value]) => {
+  tbody.html("");
+
+  // Populate the table ased on the users's input
+  matchingResults.forEach((filteredOutput) => {
+    var rows = tbody.append("tr");
+    Object.entries(filteredOutput).forEach(([key, value]) => {
       var cells = rows.append("td");
       cells.text(value);
     });
@@ -50,10 +52,10 @@ function runEnter() {
   // Handle no matching results
   if (matchingResults.length == 0) {
     ufoElement.html("");
-    ufoElement.append("td").text(`There were no UFO's on the ${userInput}`);
+    ufoElement.append("td").text(`There were no UFO's on the ${userInput}, try between the dates 1/1/2010 to 1/13/2010 when there were heaps of UFO's exploring the USA!`);
     return;
   }
 
-console.log(ufoElement);
+// console.log(ufoElement);
   
 };
