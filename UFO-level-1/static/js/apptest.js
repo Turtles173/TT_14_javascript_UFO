@@ -5,8 +5,7 @@ const tbody = d3.select("tbody")
 // Select the button
 var filterButton = d3.select("#filter-btn");
 
-
-// build a function here as the table is only bing built once - need to be able to call over and over again
+// Function here to  enable the table to be called repeatedly
 data.forEach((ufoOutput) => {
   var row = tbody.append("tr");
   Object.entries(ufoOutput).forEach(([key, value]) => {
@@ -38,9 +37,10 @@ function runEnter() {
   // Get the element for printing out the results
   var ufoElement = d3.select("tr");
 
+  // Clear the table for filtering
   tbody.html("");
 
-  // Populate the table ased on the users's input
+  // Populate the table based on the users's input
   matchingResults.forEach((filteredOutput) => {
     var rows = tbody.append("tr");
     Object.entries(filteredOutput).forEach(([key, value]) => {
