@@ -32,20 +32,25 @@ function runEnter() {
   
   // Get the value property of the input element
   var userInputDate = inputDate.property("value");
-  var userInputCity = inputCity.property("value"); 
-  var userInputState = inputState.property("value");  
-  var userInputCountry = inputCountry.property("value");  
-  var userInputShape = inputShape.property("value");
+  var userInputCity = inputCity.property("value").toLowerCase(); 
+  var userInputState = inputState.property("value").toLowerCase();  
+  var userInputCountry = inputCountry.property("value").toLowerCase();
+  var userInputShape = inputShape.property("value").toLowerCase();
 
   // Use the form input to filter the data by date of UFO sighting
-  var matchingResults = tableData.filter(ufoSighting => ufoSighting.datetime == userInputDate||
-                                                        ufoSighting.city == userInputCity ||
-                                                        ufoSighting.state == userInputState ||
-                                                        ufoSighting.country == userInputCountry ||
-                                                        ufoSighting.shape == userInputShape
+  // var matchingResults = tableData.filter(ufoSighting => ((ufoSighting.datetime == userInputDate) || (ufoSighting.datetime ==! userInputDate)) ||
+  //                                                       ((ufoSighting.city == userInputCity) || (ufoSighting.city ==! userInputCity)) ||
+  //                                                       ((ufoSighting.state == userInputState) || (ufoSighting.state ==! userInputState)) ||
+  //                                                       ((ufoSighting.country == userInputCountry) || (ufoSighting.country ==! userInputCountry)) ||
+  //                                                       ((ufoSighting.shape == userInputShape) || (ufoSighting.shape == userInputShape))
+  //                                                       );
+ 
+  var matchingResults = tableData.filter(ufoSighting => (ufoSighting.datetime == userInputDate) ||
+                                                        (ufoSighting.city == userInputCity) ||
+                                                        (ufoSighting.state == userInputState) ||
+                                                        (ufoSighting.country == userInputCountry) ||
+                                                        (ufoSighting.shape == userInputShape)
                                                         );
-  
-
   // console.log(matchingResults);
   
   // Get the element for printing out the results
@@ -66,10 +71,13 @@ function runEnter() {
   // Handle no matching results
   if (matchingResults.length == 0) {
     ufoElement.html("");
-    ufoElement.append("td").text(`There were no UFO's on the ${userInput}, try between the dates 1/1/2010 to 1/13/2010 or another selection - there were heaps of UFO's exploring the USA!`);
+    ufoElement.append("td").text(`Try Again! You need to enter all the info between the dates 1/1/2010 to 1/13/2010!`);
     return;
   }
+
 
 // console.log(ufoElement);
   
 };
+
+// Reset the data afrer a search
