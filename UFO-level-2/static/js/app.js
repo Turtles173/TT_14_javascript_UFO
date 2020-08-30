@@ -38,19 +38,13 @@ function runEnter() {
   var userInputShape = inputShape.property("value").toLowerCase();
 
   // Use the form input to filter the data by date of UFO sighting
-  // var matchingResults = tableData.filter(ufoSighting => ((ufoSighting.datetime == userInputDate) || (ufoSighting.datetime ==! userInputDate)) ||
-  //                                                       ((ufoSighting.city == userInputCity) || (ufoSighting.city ==! userInputCity)) ||
-  //                                                       ((ufoSighting.state == userInputState) || (ufoSighting.state ==! userInputState)) ||
-  //                                                       ((ufoSighting.country == userInputCountry) || (ufoSighting.country ==! userInputCountry)) ||
-  //                                                       ((ufoSighting.shape == userInputShape) || (ufoSighting.shape == userInputShape))
-  //                                                       );
- 
-  var matchingResults = tableData.filter(ufoSighting => (ufoSighting.datetime == userInputDate) ||
-                                                        (ufoSighting.city == userInputCity) ||
-                                                        (ufoSighting.state == userInputState) ||
-                                                        (ufoSighting.country == userInputCountry) ||
-                                                        (ufoSighting.shape == userInputShape)
+  var matchingResults = tableData.filter(ufoSighting => ((ufoSighting.datetime == userInputDate) ?? (ufoSighting.datetime ==! userInputDate)) ||
+                                                        ((ufoSighting.city == userInputCity) ?? (ufoSighting.city ==! userInputCity)) ||
+                                                        ((ufoSighting.state == userInputState) ?? (ufoSighting.state ==! userInputState)) ||
+                                                        ((ufoSighting.country == userInputCountry) ?? (ufoSighting.country ==! userInputCountry)) ||
+                                                        ((ufoSighting.shape == userInputShape) ?? (ufoSighting.shape == userInputShape))
                                                         );
+ 
   // console.log(matchingResults);
   
   // Get the element for printing out the results
